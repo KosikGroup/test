@@ -94,7 +94,11 @@ jobs:
               if: always() && steps.install.outcome == 'success'
               run: ./vendor/bin/phpstan analyze
 
+            - name: "Run tests"
+              run: vendor/bin/simple-phpunit ${{ env.PHPUNIT_FLAGS }}
+
             - name: SonarCloud Scan
+              if: always() && steps.install.outcome == 'success'
               uses: SonarSource/sonarcloud-github-action@master
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
