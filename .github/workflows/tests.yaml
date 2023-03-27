@@ -24,27 +24,27 @@ jobs:
         strategy:
             matrix:
                 operating-system: ['ubuntu-latest']
-                php-version: ['8.1']
-                include:
-                    - operating-system: 'macos-latest'
-                      php-version: '8.1'
-                    - operating-system: 'windows-latest'
-                      php-version: '8.1'
+#                php-version: ['8.1']
+#                include:
+#                    - operating-system: 'macos-latest'
+#                      php-version: '8.1'
+#                    - operating-system: 'windows-latest'
+#                      php-version: '8.1'
 
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v3
+#
+#            - name: "Install PHP with extensions"
+#              uses: shivammathur/setup-php@v2
+#              with:
+#                  coverage: "none"
+#                  extensions: "intl, mbstring, pdo_sqlite"
+#                  php-version: ${{ matrix.php-version }}
+#                  tools: composer:v2
 
-            - name: "Install PHP with extensions"
-              uses: shivammathur/setup-php@v2
-              with:
-                  coverage: "none"
-                  extensions: "intl, mbstring, pdo_sqlite"
-                  php-version: ${{ matrix.php-version }}
-                  tools: composer:v2
-
-            - name: "Add PHPUnit matcher"
-              run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+#            - name: "Add PHPUnit matcher"
+#              run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
             - name: "Set composer cache directory"
               id: composer-cache

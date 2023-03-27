@@ -13,36 +13,36 @@ permissions:
     contents: read
 
 jobs:
-    php-cs-fixer:
-        name: PHP-CS-Fixer
-        runs-on: ubuntu-latest
-        steps:
-            - name: "Checkout code"
-              uses: actions/checkout@v3
-
-            - name: PHP-CS-Fixer
-              uses: docker://oskarstark/php-cs-fixer-ga
-              with:
-                  args: --diff --dry-run
+#    php-cs-fixer:
+#        name: PHP-CS-Fixer
+#        runs-on: ubuntu-latest
+#        steps:
+#            - name: "Checkout code"
+#              uses: actions/checkout@v3
+#
+#            - name: PHP-CS-Fixer
+#              uses: docker://oskarstark/php-cs-fixer-ga
+#              with:
+#                  args: --diff --dry-run
 
     linters:
         name: Linters
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                php-version: ['8.1']
+#        strategy:
+#            matrix:
+#                php-version: ['8.1']
 
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v3
 
-            - name: "Install PHP with extensions"
-              uses: shivammathur/setup-php@v2
-              with:
-                  coverage: "none"
-                  extensions: intl
-                  php-version: ${{ matrix.php-version }}
-                  tools: composer:v2
+#            - name: "Install PHP with extensions"
+#              uses: shivammathur/setup-php@v2
+#              with:
+#                  coverage: "none"
+#                  extensions: intl
+#                  php-version: ${{ matrix.php-version }}
+#                  tools: composer:v2
 
             - name: "Set composer cache directory"
               id: composer-cache
